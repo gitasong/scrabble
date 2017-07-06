@@ -2,6 +2,22 @@
 
     class Scrabble
     {
+        private $word;
+
+        function __construct($word)
+        {
+            $this->word = $word;
+        }
+
+        function getWord($word)
+        {
+            return $this->word;
+        }
+
+        function setWord($word)
+        {
+            $this->word = (string)$word;
+        }
 
         function calculateWord($word)
         {
@@ -15,6 +31,19 @@
                 $total_score += $char_score;
             }
             return $total_score;
+        }
+
+        function save()
+        {
+            array_push($_SESSION['list_of_words'], $this);
+        }
+        static function getAll()
+        {
+            return $_SESSION['list_of_words'];
+        }
+        static function deleteAll()
+        {
+            $_SESSION['list_of_words'] = array();
         }
     }
  ?>
