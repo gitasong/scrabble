@@ -18,7 +18,7 @@
     });
 
     $app->post('/calc-score', function() use ($app) {
-        $new_scrabble = new Scrabble;
+        $new_scrabble = new Scrabble($_POST['word']);
         $total_score = $new_scrabble->calculateWord($_POST['word']);
 
         return $app['twig']->render('view_score.html.twig', array('total_score' => $total_score));
