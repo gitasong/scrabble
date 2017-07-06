@@ -11,5 +11,12 @@
         return $app['twig']->render('input_form.html.twig');
     });
 
+    $app->post('/calc-score', function() use ($app) {
+        $new_scrabble = new Scrabble;
+        $total_score = $new_scrabble->calculateWord($_POST['word']);
+
+        return $app['twig']->render('view_score.html.twig', array('total_score' => $total_score));
+    });
+
     return $app;
 ?>
