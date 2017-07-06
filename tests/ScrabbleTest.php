@@ -15,5 +15,18 @@
             // Assert
             $this->assertEquals(1, $result);
         }
+
+        function testCalculateWordMultiLetter()
+        {
+            // Arrange
+            $test_scrabble = new Scrabble;
+            $input = 'Monkey';
+
+            // Act
+            $result = $test_scrabble->calculateWord($input);
+
+            // Assert
+            $this->assertEquals(15, $result);
+        }
     }
 ?>
